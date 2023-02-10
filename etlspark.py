@@ -1,12 +1,18 @@
 from pyspark.sql import SparkSession
-from pyspark import SparkContext
 from pyspark import SparkConf
 from pyspark.sql.functions import flatten
 
 BUCKET="dataminded-academy-capstone-resources/raw/open_aq/"
 
-
-config = {"spark.jars.packages": "org.apache.hadoop:hadoop-aws:3.1.2,net.snowflake:spark-snowflake_2.12:2.11.0-spark_3.3,net.snowflake:snowflake-jdbc:3.13.22","fs.s3a.aws.credentials.provider": "com.amazonaws.auth.DefaultAWSCredentialsProviderChain"}
+pkgs = [
+    "org.apache.hadoop:hadoop-aws:3.1.2",
+    "net.snowflake:spark-snowflake_2.12:2.11.0-spark_3.3",
+    "net.snowflake:snowflake-jdbc:3.13.22"
+]
+config = {
+    "spark.jars.packages": ",".join(pkgs),
+    "fs.s3a.aws.credentials.provider": "com.amazonaws.auth.DefaultAWSCredentialsProviderChain"
+    }
 
 conf = SparkConf().setAll(config.items())
 
