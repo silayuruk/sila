@@ -82,4 +82,3 @@ sfOptions = {
 )
 
 
-docker push 338791806049.dkr.ec2.eu-west-1.amazonaws.com/sila-capstone:environment: academy-capstone-winter-2023
